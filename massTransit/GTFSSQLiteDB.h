@@ -9,10 +9,11 @@
 #import "SQLiteDB.h"
 #import "DGRoute.h"
 #import "DGStop.h"
+#import "DGTrip.h"
+#import "DGStopTimes.h"
 
 @interface GTFSSQLiteDB : SQLiteDB
 
-- (id)initWithDB: (NSString*)dbFile;
 - (NSArray*)allRoutes;
 - (NSArray*)stopsForRoute:(DGRoute*)rt;
 - (NSArray*)timesForStop: (DGStop*)stop;
