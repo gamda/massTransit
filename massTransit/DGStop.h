@@ -14,14 +14,15 @@
 @property (readonly) NSString* stop_id;
 @property (readonly) NSString* stop_name;
 @property (readonly) CLLocationCoordinate2D coord;
+/*
+ Remove optional fields:
 @property (readonly) NSString* zone_id;
 @property (readonly) NSString* stop_url;
+ */
 
 - (id) initWithId: (NSString*) Id
         andName: (NSString*) name
         andLon: (double) lon
-        andLat: (double) lat
-        andZoneId: (NSString*) zoneId
-        andStopUrl: (NSString*)stopUrl;
+        andLat: (double) lat;
 
 @end

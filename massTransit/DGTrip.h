@@ -13,18 +13,16 @@
 @property (readonly) NSString* route_id;
 @property (readonly) NSString* service_id;
 @property (readonly) int trip_id;
+/*
 @property (readonly) NSString* trip_headsign;
 @property (readonly) NSString* direction_id;
 @property (readonly) NSString* block_id;
 @property (readonly) NSString* shape_id;
+ */
 
 - (id) initWithRouteId: (NSString*) routeId
         andServiceId: (NSString*) serviceId
-        andTripId: (int)tripId
-        andTripHeadSign: (NSString*) headSign
-        andDirectionId: (NSString*) dirId
-        andBlockId: (NSString*) blockId
-        andShapeId: (NSString*) shapeId;
+        andTripId: (int)tripId;
 
 @end
 
