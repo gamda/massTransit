@@ -10,4 +10,6 @@
 
 @interface DGOctaDb : GTFSSQLiteDB
 
++ (DGOctaDb*) databaseConnection;
+
 @end

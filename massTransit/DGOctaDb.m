@@ -10,6 +10,11 @@
 
 @implementation DGOctaDb
 
++ (DGOctaDb*) databaseConnection
+{
+    return (DGOctaDb*)[super databaseWithFile:@"OCTA"];
+}
+
 - (id) init{
     self = [super initWithDB:@"OCTA"];
     return self;
