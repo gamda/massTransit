@@ -19,18 +19,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-  /*
-   Open the PDF document, extract the first page, and pass the page to the PDF scroll view.
-   */
-  NSURL *pdfURL = [[NSBundle mainBundle] URLForResource:@"sysmapjune12" withExtension:@"pdf"];
-  
-  CGPDFDocumentRef PDFDocument = CGPDFDocumentCreateWithURL((__bridge CFURLRef)pdfURL);
-  
-  CGPDFPageRef PDFPage = CGPDFDocumentGetPage(PDFDocument, 1);
-  [(PDFScrollView *)self.view setPDFPage:PDFPage];
-  
-  CGPDFDocumentRelease(PDFDocument);
-
 }
 
 - (void)viewDidUnload
