@@ -7,6 +7,7 @@
 //
 
 #import "DGMetrolinkRouteViewController.h"
+#import "DGMetrolinkStopViewController.h"
 
 @interface DGMetrolinkRouteViewController ()
 
@@ -133,6 +134,16 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"Prepare for segue");
+    if([segue.identifier isEqualToString:@"metrolinkRouteToStops"]) {
+        DGMetrolinkStopViewController* stopVC = segue.destinationViewController;
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        stopVC.myRoute = [self.routes objectAtIndex:selectedRowIndex.row];
+    }
 }
 
 @end

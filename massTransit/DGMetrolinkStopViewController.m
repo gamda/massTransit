@@ -1,18 +1,18 @@
 //
-//  DGOctaStopViewController.m
+//  DGMetrolinkStopViewController.m
 //  massTransit
 //
 //  Created by Campus User on 11/7/13.
 //  Copyright (c) 2013 gamda. All rights reserved.
 //
 
-#import "DGOctaStopViewController.h"
+#import "DGMetrolinkStopViewController.h"
 
-@interface DGOctaStopViewController ()
+@interface DGMetrolinkStopViewController ()
 
 @end
 
-@implementation DGOctaStopViewController
+@implementation DGMetrolinkStopViewController
 
 @synthesize stops, myRoute;
 
@@ -28,13 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     if (dbAccess == nil) {
-        dbAccess = [[DGOctaDb alloc] init];
+        dbAccess = [[DGMetrolinkDb alloc] init];
     }
     
     stops = [dbAccess stopsForRoute:myRoute];
     self.title = [NSString stringWithFormat:@"%@%@",@"Stops for route ", [myRoute route_id]];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -78,7 +78,7 @@
     // cell.textLabel.text = [stop stop_name];
     cell.textLabel.text = [stop stop_id];
     cell.detailTextLabel.text = [stop stop_name];
-
+    
     return cell;
 }
 

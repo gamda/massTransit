@@ -55,24 +55,16 @@
 
 - (NSArray*)stopsForRoute:(DGRoute*)rt {
     NSMutableArray* stops = [[NSMutableArray alloc] init];
-    int tripId = 0;
-    NSString* tripQuery = [NSString stringWithFormat:@"Select trip_id from trips where route_id=%s limit 1",[rt.route_id UTF8String]];
     sqlite3_stmt* stmt;
     const unsigned char* text;
-    // Get a valid trip_id for the route. This id will be used in the query to retrieve stops
-    if( sqlite3_prepare_v2(_databaseConnection, [tripQuery UTF8String], [tripQuery length], &stmt, nil) == SQLITE_OK) {
-        while (sqlite3_step(stmt) == SQLITE_ROW) {
-            tripId = sqlite3_column_int(stmt, 0);
-        }
-        sqlite3_finalize(stmt);
-    }
     
-    // Now get the actual stops
     NSString *stopId, *stopName;
     double stopLat, stopLon;
-    NSString* query = [NSString stringWithFormat:@"select stops.stop_id, stop_name, stop_lat, stop_lon from stop_times, stops where trip_id = %d and stop_times.stop_id = stops.stop_id order by stop_sequence",tripId] ;
+    NSLog(@"%@",[rt route_id]);
+    NSString* query = [NSString stringWithFormat:@"select distinct stops.stop_id, stop_name, stop_lat, stop_lon from stop_times, stops, trips where trips.trip_id=stop_times.trip_id and stop_times.stop_id=stops.stop_id and route_id=\"%@\" order by stops.stop_id",[rt route_id]] ;
     if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {
+            NSLog(@"hi");
             // Column 1: stop_id
             text = sqlite3_column_text(stmt, 0);
             if( text )
