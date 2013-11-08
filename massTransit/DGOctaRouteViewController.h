@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DGOctaDb.h"
 
-@interface DGOctaRouteViewController : UITableViewController
+@interface DGOctaRouteViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 {
     DGOctaDb* dbAccess;
 }

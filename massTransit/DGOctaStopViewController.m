@@ -1,20 +1,20 @@
 //
-//  DGMetrolinkRouteViewController.m
+//  DGOctaStopViewController.m
 //  massTransit
 //
 //  Created by Campus User on 11/7/13.
 //  Copyright (c) 2013 gamda. All rights reserved.
 //
 
-#import "DGMetrolinkRouteViewController.h"
+#import "DGOctaStopViewController.h"
 
-@interface DGMetrolinkRouteViewController ()
+@interface DGOctaStopViewController ()
 
 @end
 
-@implementation DGMetrolinkRouteViewController
+@implementation DGOctaStopViewController
 
-@synthesize routes;
+@synthesize stops, myRoute;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,13 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    NSLog(@"In stop view");
     if (dbAccess == nil) {
-        dbAccess = [[DGMetrolinkDb alloc] init];
+        dbAccess = [[DGOctaDb alloc] init];
     }
     
-    routes = [dbAccess allRoutes];
-    self.title = @"Metrolink Routes";
+    stops = [dbAccess stopsForRoute:myRoute];
+    NSLog(@"%d",[stops count]);
+    self.title = [NSString stringWithFormat:@"%@%@",@"Stops for route ", [myRoute route_id]];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,7 +48,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    routes = nil;
 }
 
 #pragma mark - Table view data source
@@ -63,12 +63,12 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [routes count];
+    return [stops count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"RouteCell";
+    static NSString *CellIdentifier = @"StopCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -76,10 +76,10 @@
 		// Use the default cell style.
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    DGRoute* route = [routes objectAtIndex:indexPath.row];
-    NSString* title = [route route_id];
-    cell.textLabel.text = title;
-    // cell.detailTextLabel.text = [[routes objectAtIndex:indexPath.row] route_long_name];
+    DGStop* stop = [stops objectAtIndex:indexPath.row];
+    // cell.textLabel.text = [stop stop_name];
+    cell.detailTextLabel.text = [stop stop_name];
+
     return cell;
 }
 

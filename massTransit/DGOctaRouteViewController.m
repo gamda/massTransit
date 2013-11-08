@@ -7,6 +7,7 @@
 //
 
 #import "DGOctaRouteViewController.h"
+#import "DGOctaStopViewController.h"
 
 @interface DGOctaRouteViewController ()
 
@@ -76,8 +77,7 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     DGRoute* route = [routes objectAtIndex:indexPath.row];
-    NSString* title = [route route_id];
-    cell.textLabel.text = title;
+    cell.textLabel.text = [route route_id];
     cell.detailTextLabel.text = [[routes objectAtIndex:indexPath.row] route_long_name];
     return cell;
 }
@@ -132,6 +132,16 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"Prepare for segue");
+    if([segue.identifier isEqualToString:@"octaRouteToStops"]) {
+        DGOctaStopViewController* stopVC = segue.destinationViewController;
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        stopVC.myRoute = [self.routes objectAtIndex:selectedRowIndex.row];
+    }
 }
 
 @end

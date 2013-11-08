@@ -47,7 +47,6 @@
                                                     andLongName:routeLongName
                                                     andRouteType:myRouteType];
             [routes addObject:newRoute];
-            NSLog(@"route id: %@, shortName: %@, ongName: %@, type: %d",routeId,routeShortName,routeLongName,myRouteType);
         }
         sqlite3_finalize(stmt);
     }
@@ -62,7 +61,7 @@
     const unsigned char* text;
     // Get a valid trip_id for the route. This id will be used in the query to retrieve stops
     if( sqlite3_prepare_v2(_databaseConnection, [tripQuery UTF8String], [tripQuery length], &stmt, nil) == SQLITE_OK) {
-        while (sqlite3_step(stmt)) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
             tripId = sqlite3_column_int(stmt, 0);
         }
         sqlite3_finalize(stmt);
@@ -73,7 +72,7 @@
     double stopLat, stopLon;
     NSString* query = [NSString stringWithFormat:@"select stops.stop_id, stop_name, stop_lat, stop_lon from stop_times, stops where trip_id = %d and stop_times.stop_id = stops.stop_id order by stop_sequence",tripId] ;
     if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
-        while (sqlite3_step(stmt)) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
             // Column 1: stop_id
             text = sqlite3_column_text(stmt, 0);
             if( text )
@@ -112,7 +111,7 @@
     int tripId, stopSequence = 0;
     
     if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
-        while (sqlite3_step(stmt)) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
             // Column 1: trip_id
             tripId = sqlite3_column_int(stmt, 0);
             // Column 2: arrival_time
