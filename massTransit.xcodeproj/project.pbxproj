@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61ADB08C182B53A000AE00E7 /* DGStopTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB08B182B53A000AE00E7 /* DGStopTimes.m */; };
+		61ADB090182B711000AE00E7 /* DGOctaDb.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB08F182B710F00AE00E7 /* DGOctaDb.m */; };
+		61ADB093182B71E600AE00E7 /* DGMetrolinkDb.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB092182B71E600AE00E7 /* DGMetrolinkDb.m */; };
+		61ADB099182B739700AE00E7 /* DGOctaRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB098182B739700AE00E7 /* DGOctaRouteViewController.m */; };
 		61C1CE16182B1384006A3531 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C1CE15182B1384006A3531 /* UIKit.framework */; };
 		61C1CE18182B1384006A3531 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C1CE17182B1384006A3531 /* Foundation.framework */; };
 		61C1CE1A182B1384006A3531 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C1CE19182B1384006A3531 /* CoreGraphics.framework */; };
@@ -25,13 +29,35 @@
 		61C1CE4A182B145A006A3531 /* TiledPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE46182B145A006A3531 /* TiledPDFView.m */; };
 		61C1CE4B182B145A006A3531 /* PDFScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE48182B145A006A3531 /* PDFScrollViewController.m */; };
 		61C1CE4E182B1511006A3531 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C1CE4D182B1511006A3531 /* QuartzCore.framework */; };
-		61C1CE54182B1732006A3531 /* DGMetrolinkMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE53182B1732006A3531 /* DGMetrolinkMapViewController.m */; };
 		61C1CE56182B1792006A3531 /* metrolink_system_map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 61C1CE55182B1792006A3531 /* metrolink_system_map.pdf */; };
 		61C1CE58182B17B2006A3531 /* octa_sysmapoct13.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 61C1CE57182B17B2006A3531 /* octa_sysmapoct13.pdf */; };
 		61C1CE5B182B17CC006A3531 /* DGOctaMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE5A182B17CC006A3531 /* DGOctaMapViewController.m */; };
+		61C1CE5D182B1D82006A3531 /* OCTA.sl3 in Resources */ = {isa = PBXBuildFile; fileRef = 61C1CE5C182B1D82006A3531 /* OCTA.sl3 */; };
+		61C1CE5F182B1D8D006A3531 /* Metrolink.sl3 in Resources */ = {isa = PBXBuildFile; fileRef = 61C1CE5E182B1D8D006A3531 /* Metrolink.sl3 */; };
+		61C1CE62182B1EC1006A3531 /* SQLiteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE61182B1EC1006A3531 /* SQLiteDB.m */; };
+		61C1CE64182B2014006A3531 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C1CE63182B2013006A3531 /* libsqlite3.dylib */; };
+		61C1CE67182B2359006A3531 /* GTFSSQLiteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE66182B2359006A3531 /* GTFSSQLiteDB.m */; };
+		61C1CE6B182B2456006A3531 /* DGRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE6A182B2456006A3531 /* DGRoute.m */; };
+		61C1CE6E182B2E68006A3531 /* DGStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE6D182B2E67006A3531 /* DGStop.m */; };
+		61C1CE70182B2F22006A3531 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C1CE6F182B2F22006A3531 /* CoreLocation.framework */; };
+		61C1CE73182B372B006A3531 /* DGTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 61C1CE72182B372A006A3531 /* DGTrip.m */; };
+		61D343C4182CB57F00453681 /* DGMetrolinkMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D343C3182CB57F00453681 /* DGMetrolinkMapViewController.m */; };
+		61D343C7182CB5AE00453681 /* DGMetrolinkRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D343C6182CB5AE00453681 /* DGMetrolinkRouteViewController.m */; };
+		61D343CA182CBFA100453681 /* DGOctaStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D343C9182CBFA100453681 /* DGOctaStopViewController.m */; };
+		61D343CE182CD16000453681 /* DGMetrolinkStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D343CD182CD16000453681 /* DGMetrolinkStopViewController.m */; };
+		61D343D2182D7DB000453681 /* DGDetailStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D343D1182D7DB000453681 /* DGDetailStopViewController.m */; };
+		61D343D4182D7ECE00453681 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D343D3182D7ECE00453681 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61ADB08A182B53A000AE00E7 /* DGStopTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStopTimes.h; sourceTree = "<group>"; };
+		61ADB08B182B53A000AE00E7 /* DGStopTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStopTimes.m; sourceTree = "<group>"; };
+		61ADB08E182B710E00AE00E7 /* DGOctaDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOctaDb.h; sourceTree = "<group>"; };
+		61ADB08F182B710F00AE00E7 /* DGOctaDb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOctaDb.m; sourceTree = "<group>"; };
+		61ADB091182B71E600AE00E7 /* DGMetrolinkDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMetrolinkDb.h; sourceTree = "<group>"; };
+		61ADB092182B71E600AE00E7 /* DGMetrolinkDb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMetrolinkDb.m; sourceTree = "<group>"; };
+		61ADB097182B739700AE00E7 /* DGOctaRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOctaRouteViewController.h; sourceTree = "<group>"; };
+		61ADB098182B739700AE00E7 /* DGOctaRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOctaRouteViewController.m; sourceTree = "<group>"; };
 		61C1CE12182B1384006A3531 /* massTransit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = massTransit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C1CE15182B1384006A3531 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		61C1CE17182B1384006A3531 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,12 +83,35 @@
 		61C1CE47182B145A006A3531 /* PDFScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFScrollViewController.h; sourceTree = "<group>"; };
 		61C1CE48182B145A006A3531 /* PDFScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFScrollViewController.m; sourceTree = "<group>"; };
 		61C1CE4D182B1511006A3531 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		61C1CE52182B1732006A3531 /* DGMetrolinkMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DGMetrolinkMapViewController.h; path = ../DGMetrolinkMapViewController.h; sourceTree = "<group>"; };
-		61C1CE53182B1732006A3531 /* DGMetrolinkMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DGMetrolinkMapViewController.m; path = ../DGMetrolinkMapViewController.m; sourceTree = "<group>"; };
 		61C1CE55182B1792006A3531 /* metrolink_system_map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = metrolink_system_map.pdf; sourceTree = "<group>"; };
 		61C1CE57182B17B2006A3531 /* octa_sysmapoct13.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = octa_sysmapoct13.pdf; sourceTree = "<group>"; };
 		61C1CE59182B17CC006A3531 /* DGOctaMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOctaMapViewController.h; sourceTree = "<group>"; };
 		61C1CE5A182B17CC006A3531 /* DGOctaMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOctaMapViewController.m; sourceTree = "<group>"; };
+		61C1CE5C182B1D82006A3531 /* OCTA.sl3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = OCTA.sl3; sourceTree = "<group>"; };
+		61C1CE5E182B1D8D006A3531 /* Metrolink.sl3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Metrolink.sl3; sourceTree = "<group>"; };
+		61C1CE60182B1EC1006A3531 /* SQLiteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteDB.h; sourceTree = "<group>"; };
+		61C1CE61182B1EC1006A3531 /* SQLiteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteDB.m; sourceTree = "<group>"; };
+		61C1CE63182B2013006A3531 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		61C1CE65182B2359006A3531 /* GTFSSQLiteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFSSQLiteDB.h; sourceTree = "<group>"; };
+		61C1CE66182B2359006A3531 /* GTFSSQLiteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTFSSQLiteDB.m; sourceTree = "<group>"; };
+		61C1CE69182B2456006A3531 /* DGRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRoute.h; sourceTree = "<group>"; };
+		61C1CE6A182B2456006A3531 /* DGRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRoute.m; sourceTree = "<group>"; };
+		61C1CE6C182B2E67006A3531 /* DGStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStop.h; sourceTree = "<group>"; };
+		61C1CE6D182B2E67006A3531 /* DGStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStop.m; sourceTree = "<group>"; };
+		61C1CE6F182B2F22006A3531 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		61C1CE71182B372A006A3531 /* DGTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTrip.h; sourceTree = "<group>"; };
+		61C1CE72182B372A006A3531 /* DGTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTrip.m; sourceTree = "<group>"; };
+		61D343C2182CB57F00453681 /* DGMetrolinkMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMetrolinkMapViewController.h; sourceTree = "<group>"; };
+		61D343C3182CB57F00453681 /* DGMetrolinkMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMetrolinkMapViewController.m; sourceTree = "<group>"; };
+		61D343C5182CB5AE00453681 /* DGMetrolinkRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMetrolinkRouteViewController.h; sourceTree = "<group>"; };
+		61D343C6182CB5AE00453681 /* DGMetrolinkRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMetrolinkRouteViewController.m; sourceTree = "<group>"; };
+		61D343C8182CBFA000453681 /* DGOctaStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOctaStopViewController.h; sourceTree = "<group>"; };
+		61D343C9182CBFA100453681 /* DGOctaStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGOctaStopViewController.m; sourceTree = "<group>"; };
+		61D343CC182CD16000453681 /* DGMetrolinkStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMetrolinkStopViewController.h; sourceTree = "<group>"; };
+		61D343CD182CD16000453681 /* DGMetrolinkStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMetrolinkStopViewController.m; sourceTree = "<group>"; };
+		61D343D0182D7DB000453681 /* DGDetailStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGDetailStopViewController.h; sourceTree = "<group>"; };
+		61D343D1182D7DB000453681 /* DGDetailStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGDetailStopViewController.m; sourceTree = "<group>"; };
+		61D343D3182D7ECE00453681 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +119,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D343D4182D7ECE00453681 /* MapKit.framework in Frameworks */,
+				61C1CE70182B2F22006A3531 /* CoreLocation.framework in Frameworks */,
+				61C1CE64182B2014006A3531 /* libsqlite3.dylib in Frameworks */,
 				61C1CE4E182B1511006A3531 /* QuartzCore.framework in Frameworks */,
 				61C1CE16182B1384006A3531 /* UIKit.framework in Frameworks */,
 				61C1CE18182B1384006A3531 /* Foundation.framework in Frameworks */,
@@ -80,6 +132,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61ADB08D182B58ED00AE00E7 /* GTFS Models */ = {
+			isa = PBXGroup;
+			children = (
+				61C1CE69182B2456006A3531 /* DGRoute.h */,
+				61C1CE6A182B2456006A3531 /* DGRoute.m */,
+				61C1CE6C182B2E67006A3531 /* DGStop.h */,
+				61C1CE6D182B2E67006A3531 /* DGStop.m */,
+				61C1CE71182B372A006A3531 /* DGTrip.h */,
+				61C1CE72182B372A006A3531 /* DGTrip.m */,
+				61ADB08A182B53A000AE00E7 /* DGStopTimes.h */,
+				61ADB08B182B53A000AE00E7 /* DGStopTimes.m */,
+			);
+			name = "GTFS Models";
+			sourceTree = "<group>";
+		};
 		61C1CE09182B1384006A3531 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +167,9 @@
 		61C1CE14182B1384006A3531 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61D343D3182D7ECE00453681 /* MapKit.framework */,
+				61C1CE6F182B2F22006A3531 /* CoreLocation.framework */,
+				61C1CE63182B2013006A3531 /* libsqlite3.dylib */,
 				61C1CE4D182B1511006A3531 /* QuartzCore.framework */,
 				61C1CE15182B1384006A3531 /* UIKit.framework */,
 				61C1CE17182B1384006A3531 /* Foundation.framework */,
@@ -114,10 +184,16 @@
 				61C1CE24182B1384006A3531 /* DGAppDelegate.h */,
 				61C1CE25182B1384006A3531 /* DGAppDelegate.m */,
 				61C1CE2D182B1384006A3531 /* MainStoryboard.storyboard */,
-				61C1CE52182B1732006A3531 /* DGMetrolinkMapViewController.h */,
-				61C1CE53182B1732006A3531 /* DGMetrolinkMapViewController.m */,
+				61D343CB182CD12A00453681 /* OCTA Route Info */,
+				61D343CF182CD16600453681 /* Metrolink Route Info */,
+				61D343D0182D7DB000453681 /* DGDetailStopViewController.h */,
+				61D343D1182D7DB000453681 /* DGDetailStopViewController.m */,
 				61C1CE59182B17CC006A3531 /* DGOctaMapViewController.h */,
 				61C1CE5A182B17CC006A3531 /* DGOctaMapViewController.m */,
+				61D343C2182CB57F00453681 /* DGMetrolinkMapViewController.h */,
+				61D343C3182CB57F00453681 /* DGMetrolinkMapViewController.m */,
+				61ADB08D182B58ED00AE00E7 /* GTFS Models */,
+				61C1CE68182B2428006A3531 /* SQLite */,
 				61C1CE4C182B146E006A3531 /* PDF Scroll */,
 				61C1CE33182B1384006A3531 /* first.png */,
 				61C1CE35182B1384006A3531 /* first@2x.png */,
@@ -131,6 +207,8 @@
 		61C1CE1C182B1384006A3531 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				61C1CE5E182B1D8D006A3531 /* Metrolink.sl3 */,
+				61C1CE5C182B1D82006A3531 /* OCTA.sl3 */,
 				61C1CE55182B1792006A3531 /* metrolink_system_map.pdf */,
 				61C1CE57182B17B2006A3531 /* octa_sysmapoct13.pdf */,
 				61C1CE1D182B1384006A3531 /* massTransit-Info.plist */,
@@ -155,6 +233,43 @@
 				61C1CE48182B145A006A3531 /* PDFScrollViewController.m */,
 			);
 			name = "PDF Scroll";
+			sourceTree = "<group>";
+		};
+		61C1CE68182B2428006A3531 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				61C1CE60182B1EC1006A3531 /* SQLiteDB.h */,
+				61C1CE61182B1EC1006A3531 /* SQLiteDB.m */,
+				61C1CE65182B2359006A3531 /* GTFSSQLiteDB.h */,
+				61C1CE66182B2359006A3531 /* GTFSSQLiteDB.m */,
+				61ADB08E182B710E00AE00E7 /* DGOctaDb.h */,
+				61ADB08F182B710F00AE00E7 /* DGOctaDb.m */,
+				61ADB091182B71E600AE00E7 /* DGMetrolinkDb.h */,
+				61ADB092182B71E600AE00E7 /* DGMetrolinkDb.m */,
+			);
+			name = SQLite;
+			sourceTree = "<group>";
+		};
+		61D343CB182CD12A00453681 /* OCTA Route Info */ = {
+			isa = PBXGroup;
+			children = (
+				61ADB097182B739700AE00E7 /* DGOctaRouteViewController.h */,
+				61ADB098182B739700AE00E7 /* DGOctaRouteViewController.m */,
+				61D343C8182CBFA000453681 /* DGOctaStopViewController.h */,
+				61D343C9182CBFA100453681 /* DGOctaStopViewController.m */,
+			);
+			name = "OCTA Route Info";
+			sourceTree = "<group>";
+		};
+		61D343CF182CD16600453681 /* Metrolink Route Info */ = {
+			isa = PBXGroup;
+			children = (
+				61D343C5182CB5AE00453681 /* DGMetrolinkRouteViewController.h */,
+				61D343C6182CB5AE00453681 /* DGMetrolinkRouteViewController.m */,
+				61D343CC182CD16000453681 /* DGMetrolinkStopViewController.h */,
+				61D343CD182CD16000453681 /* DGMetrolinkStopViewController.m */,
+			);
+			name = "Metrolink Route Info";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +335,8 @@
 				61C1CE3D182B1385006A3531 /* second@2x.png in Resources */,
 				61C1CE56182B1792006A3531 /* metrolink_system_map.pdf in Resources */,
 				61C1CE58182B17B2006A3531 /* octa_sysmapoct13.pdf in Resources */,
+				61C1CE5D182B1D82006A3531 /* OCTA.sl3 in Resources */,
+				61C1CE5F182B1D8D006A3531 /* Metrolink.sl3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,8 +352,21 @@
 				61C1CE49182B145A006A3531 /* PDFScrollView.m in Sources */,
 				61C1CE4A182B145A006A3531 /* TiledPDFView.m in Sources */,
 				61C1CE4B182B145A006A3531 /* PDFScrollViewController.m in Sources */,
-				61C1CE54182B1732006A3531 /* DGMetrolinkMapViewController.m in Sources */,
 				61C1CE5B182B17CC006A3531 /* DGOctaMapViewController.m in Sources */,
+				61C1CE62182B1EC1006A3531 /* SQLiteDB.m in Sources */,
+				61C1CE67182B2359006A3531 /* GTFSSQLiteDB.m in Sources */,
+				61C1CE6B182B2456006A3531 /* DGRoute.m in Sources */,
+				61C1CE6E182B2E68006A3531 /* DGStop.m in Sources */,
+				61C1CE73182B372B006A3531 /* DGTrip.m in Sources */,
+				61ADB08C182B53A000AE00E7 /* DGStopTimes.m in Sources */,
+				61ADB090182B711000AE00E7 /* DGOctaDb.m in Sources */,
+				61ADB093182B71E600AE00E7 /* DGMetrolinkDb.m in Sources */,
+				61ADB099182B739700AE00E7 /* DGOctaRouteViewController.m in Sources */,
+				61D343C4182CB57F00453681 /* DGMetrolinkMapViewController.m in Sources */,
+				61D343C7182CB5AE00453681 /* DGMetrolinkRouteViewController.m in Sources */,
+				61D343CA182CBFA100453681 /* DGOctaStopViewController.m in Sources */,
+				61D343CE182CD16000453681 /* DGMetrolinkStopViewController.m in Sources */,
+				61D343D2182D7DB000453681 /* DGDetailStopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +489,7 @@
 				61C1CE42182B1385006A3531 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
