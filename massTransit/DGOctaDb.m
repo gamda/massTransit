@@ -10,14 +10,8 @@
 
 @implementation DGOctaDb
 
-+ (DGOctaDb*) databaseConnection
-{
-    return [super databaseWithFile:@"OCTA"];
-}
-
 - (id) init{
     self = [super initWithDB:@"OCTA"];
-    NSLog(@"%@",[self description]);
     return self;
 }
 

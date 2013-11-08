@@ -1,18 +1,18 @@
 //
-//  DGOctaRouteViewController.m
+//  DGMetrolinkRouteViewController.m
 //  massTransit
 //
-//  Created by Campus User on 11/6/13.
+//  Created by Campus User on 11/7/13.
 //  Copyright (c) 2013 gamda. All rights reserved.
 //
 
-#import "DGOctaRouteViewController.h"
+#import "DGMetrolinkRouteViewController.h"
 
-@interface DGOctaRouteViewController ()
+@interface DGMetrolinkRouteViewController ()
 
 @end
 
-@implementation DGOctaRouteViewController
+@implementation DGMetrolinkRouteViewController
 
 @synthesize routes;
 
@@ -30,11 +30,12 @@
     [super viewDidLoad];
     
     if (dbAccess == nil) {
-        dbAccess = [[DGOctaDb alloc] init];
+        dbAccess = [[DGMetrolinkDb alloc] init];
     }
     
     routes = [dbAccess allRoutes];
-    self.title = @"OCTA Routes";
+    NSLog(@"%d",[routes count]);
+    self.title = @"Metrolink Routes";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,6 +62,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [routes count];
 }

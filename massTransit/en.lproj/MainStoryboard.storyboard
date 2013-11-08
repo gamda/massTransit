@@ -81,16 +81,16 @@
             </objects>
             <point key="canvasLocation" x="711" y="479"/>
         </scene>
-        <!--Table View Controller - Metrolink-->
+        <!--Metrolink Route View Controller - Metrolink-->
         <scene sceneID="c5b-59-ea4">
             <objects>
-                <tableViewController id="d8V-eZ-Qtg" sceneMemberID="viewController">
+                <tableViewController id="d8V-eZ-Qtg" customClass="DGMetrolinkRouteViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fgo-JN-TeQ">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RouteCell" textLabel="UHP-QS-9Jd" detailTextLabel="TXX-P9-w3q" style="IBUITableViewCellStyleSubtitle" id="ezo-6W-7QD">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="RouteCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RouteCell" textLabel="UHP-QS-9Jd" detailTextLabel="TXX-P9-w3q" style="IBUITableViewCellStyleSubtitle" id="ezo-6W-7QD">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -141,6 +141,9 @@
     <classes>
         <class className="DGMetrolinkMapViewController" superclassName="PDFScrollViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DGMetrolinkMapViewController.h"/>
+        </class>
+        <class className="DGMetrolinkRouteViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGMetrolinkRouteViewController.h"/>
         </class>
         <class className="DGOctaMapViewController" superclassName="PDFScrollViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DGOctaMapViewController.h"/>

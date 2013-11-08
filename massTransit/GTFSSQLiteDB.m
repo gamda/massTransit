@@ -19,7 +19,6 @@
     routeType myRouteType;
     
     if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
-        NSLog(@"Entering loop");
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             // Column 1: route_id
             text = sqlite3_column_text(stmt, 0);
@@ -51,7 +50,6 @@
             NSLog(@"route id: %@, shortName: %@, ongName: %@, type: %d",routeId,routeShortName,routeLongName,myRouteType);
         }
         sqlite3_finalize(stmt);
-        NSLog(@"Out of loop");
     }
     return routes;
 }
