@@ -30,13 +30,13 @@
     [super viewDidLoad];
     
     if (dbAccess == nil) {
-        NSLog(@"Dah!");
-        dbAccess = [DGOctaDb databaseConnection];
-        NSLog(@"Hah!");
+        dbAccess = [[DGOctaDb alloc] init];
     }
     
-    routes = [(DGOctaDb*)dbAccess allRoutes];
-    NSLog(@"%d",[routes count]);
+    if ( [dbAccess respondsToSelector:@selector(allRoutes)]) {
+        NSLog(@"Iknow what to do");
+    }
+    routes = [dbAccess allRoutes];
     self.title = @"OCTA Routes";
 
     // Uncomment the following line to preserve selection between presentations.
@@ -78,10 +78,9 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     DGRoute* route = [routes objectAtIndex:indexPath.row];
-    NSString* title = [NSString stringWithFormat:@"%@ - %@",[route route_id], [route route_short_name]];
+    NSString* title = [NSString stringWithFormat:@"%@",[route route_id]];
     cell.textLabel.text = title;
     cell.detailTextLabel.text = [[routes objectAtIndex:indexPath.row] route_long_name];
-    NSLog(@"in cell");
     return cell;
 }
 

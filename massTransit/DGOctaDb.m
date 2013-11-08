@@ -12,11 +12,12 @@
 
 + (DGOctaDb*) databaseConnection
 {
-    return (DGOctaDb*)[super databaseWithFile:@"OCTA"];
+    return [super databaseWithFile:@"OCTA"];
 }
 
 - (id) init{
     self = [super initWithDB:@"OCTA"];
+    NSLog(@"%@",[self description]);
     return self;
 }
 
