@@ -138,7 +138,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"Prepare for segue");
     if([segue.identifier isEqualToString:@"metrolinkRouteToStops"]) {
         DGMetrolinkStopViewController* stopVC = segue.destinationViewController;
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];

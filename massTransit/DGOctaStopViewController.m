@@ -7,6 +7,7 @@
 //
 
 #import "DGOctaStopViewController.h"
+#import "DGDetailStopViewController.h"
 
 @interface DGOctaStopViewController ()
 
@@ -132,6 +133,15 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"octaStopToDetail"]) {
+        DGDetailStopViewController* stopVC = segue.destinationViewController;
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        stopVC.myStop = [self.stops objectAtIndex:selectedRowIndex.row];
+    }
 }
 
 @end

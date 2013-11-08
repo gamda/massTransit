@@ -24,5 +24,7 @@
         andName: (NSString*) name
         andLon: (double) lon
         andLat: (double) lat;
+- (NSString*) longitudeString;
+- (NSString*) latitudeString;
 
 @end
