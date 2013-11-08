@@ -33,6 +33,8 @@ typedef enum routeType : NSUInteger {
 @property (readonly) NSString* route_text_color;
  */
 
++ (NSString*) routeTypeStrFromRouteType: (routeType) route;
+
 - (id) initWithRouteId: (NSString*)routeId
           andShortName: (NSString*)shortName
           andLongName: (NSString*)longName
