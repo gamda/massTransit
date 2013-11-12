@@ -141,6 +141,7 @@
         DGDetailStopViewController* stopVC = segue.destinationViewController;
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         stopVC.myStop = [self.stops objectAtIndex:selectedRowIndex.row];
+        stopVC.dbAccess = dbAccess;
     }
 }
 

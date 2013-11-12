@@ -17,5 +17,6 @@
 - (NSArray*)allRoutes;
 - (NSArray*)stopsForRoute:(DGRoute*)rt;
 - (NSArray*)timesForStop: (DGStop*)stop;
+- (NSString*)service_idForTripId: (int)tripId;
 
 @end

@@ -123,33 +123,45 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBm-zc-9Sj">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="46O-9S-1aq"/>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUE-ZW-ayq">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARd-S1-SOT">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="dGs-E6-DWm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="View Stop Times">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnViewStopTImes:" destination="Wj7-GD-rmg" eventType="touchUpInside" id="ZLj-ay-lPz"/>
+                                    <segue destination="yuQ-JZ-Gqp" kind="push" identifier="stopToTimes" id="83H-3C-trY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="46O-9S-1aq" firstAttribute="centerX" secondItem="SBm-zc-9Sj" secondAttribute="centerX" type="default" id="0RU-8s-zW2"/>
-                            <constraint firstItem="YUE-ZW-ayq" firstAttribute="leading" secondItem="SBm-zc-9Sj" secondAttribute="leading" type="default" id="SNe-qS-Kek"/>
+                            <constraint firstAttribute="trailing" secondItem="ARd-S1-SOT" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LsL-pe-kmb"/>
                             <constraint firstItem="YUE-ZW-ayq" firstAttribute="top" secondItem="Yeo-li-llZ" secondAttribute="top" constant="20" symbolic="YES" type="default" id="aZV-5Q-G78"/>
-                            <constraint firstItem="SBm-zc-9Sj" firstAttribute="top" secondItem="YUE-ZW-ayq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dXA-Mu-SI1"/>
-                            <constraint firstItem="46O-9S-1aq" firstAttribute="top" secondItem="SBm-zc-9Sj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="j8F-nl-wA8"/>
+                            <constraint firstItem="46O-9S-1aq" firstAttribute="top" secondItem="ARd-S1-SOT" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gvZ-uv-qdD"/>
                             <constraint firstAttribute="bottom" secondItem="46O-9S-1aq" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="j9T-El-bNi"/>
+                            <constraint firstItem="YUE-ZW-ayq" firstAttribute="leading" secondItem="Yeo-li-llZ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jKX-E0-PeL"/>
                             <constraint firstItem="46O-9S-1aq" firstAttribute="leading" secondItem="Yeo-li-llZ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jzy-5J-qt0"/>
                             <constraint firstAttribute="trailing" secondItem="46O-9S-1aq" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="svl-7F-bJQ"/>
+                            <constraint firstItem="ARd-S1-SOT" firstAttribute="top" secondItem="YUE-ZW-ayq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="wcI-KA-xSm"/>
+                            <constraint firstItem="ARd-S1-SOT" firstAttribute="leading" secondItem="Yeo-li-llZ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xe5-bG-EtX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LkJ-Pe-cY1"/>
                     <connections>
-                        <outlet property="lblLocation" destination="SBm-zc-9Sj" id="VNx-bL-YZy"/>
                         <outlet property="lblTitle" destination="YUE-ZW-ayq" id="81X-wQ-3yY"/>
                         <outlet property="map" destination="46O-9S-1aq" id="EV3-rR-o9g"/>
                     </connections>
@@ -157,6 +169,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egj-1r-AWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2163" y="-941"/>
+        </scene>
+        <!--Detail Stop View Controller-->
+        <scene sceneID="J1M-Xb-mkE">
+            <objects>
+                <viewController id="hZU-34-s25" customClass="DGDetailStopViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yP3-pz-aRy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vwY-zF-1IH"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxC-gi-zDr">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pM6-zm-6mX">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="R4Z-6K-aBQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="View Stop Times">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnViewStopTImes:" destination="hZU-34-s25" eventType="touchUpInside" id="1bV-g7-0EP"/>
+                                    <segue destination="MWi-kM-hYS" kind="push" identifier="stopToTimes" id="ZNS-Ao-mB8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nxC-gi-zDr" firstAttribute="top" secondItem="yP3-pz-aRy" secondAttribute="top" constant="20" symbolic="YES" type="default" id="7Tw-U0-3f8"/>
+                            <constraint firstItem="vwY-zF-1IH" firstAttribute="leading" secondItem="yP3-pz-aRy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="FaA-2r-3EF"/>
+                            <constraint firstItem="pM6-zm-6mX" firstAttribute="leading" secondItem="yP3-pz-aRy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gyf-mY-2M5"/>
+                            <constraint firstAttribute="trailing" secondItem="pM6-zm-6mX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="JIq-Ga-ZcZ"/>
+                            <constraint firstItem="vwY-zF-1IH" firstAttribute="top" secondItem="pM6-zm-6mX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UOo-fO-BlE"/>
+                            <constraint firstAttribute="trailing" secondItem="vwY-zF-1IH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="aE4-mk-xq1"/>
+                            <constraint firstItem="nxC-gi-zDr" firstAttribute="leading" secondItem="yP3-pz-aRy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aGY-lt-cu2"/>
+                            <constraint firstItem="pM6-zm-6mX" firstAttribute="top" secondItem="nxC-gi-zDr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="m4R-xO-PN7"/>
+                            <constraint firstAttribute="bottom" secondItem="vwY-zF-1IH" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="ygf-aD-X8j"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DY9-AX-Evd"/>
+                    <connections>
+                        <outlet property="lblTitle" destination="nxC-gi-zDr" id="NeQ-On-ote"/>
+                        <outlet property="map" destination="vwY-zF-1IH" id="Axd-Si-B1n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rgH-jl-cCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2163" y="-237"/>
+        </scene>
+        <!--Stop Times View Controller-->
+        <scene sceneID="Bxv-yS-hb5">
+            <objects>
+                <tableViewController id="yuQ-JZ-Gqp" customClass="DGStopTimesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RP2-gu-Trq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="timeForStop" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeForStop" textLabel="mpw-P4-lno" detailTextLabel="BaO-gX-qV8" style="IBUITableViewCellStyleSubtitle" id="kqc-3y-Cv1">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpw-P4-lno">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaO-gX-qV8">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yuQ-JZ-Gqp" id="tqg-Es-Bgz"/>
+                            <outlet property="delegate" destination="yuQ-JZ-Gqp" id="D9l-3M-yuZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="aOD-nd-Z1i"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gpL-mb-hh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2631" y="-941"/>
         </scene>
         <!--Octa Map View Controller - OCTA Map-->
         <scene sceneID="4Pa-8g-mzl">
@@ -242,7 +351,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="xRp-mZ-puO" kind="push" identifier="metrolinkStopToDetail" id="bHU-VU-04Q"/>
+                                    <segue destination="hZU-34-s25" kind="push" identifier="metrolinkStopToDetail" id="KRg-Va-pun"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -309,87 +418,49 @@
             </objects>
             <point key="canvasLocation" x="711" y="-237"/>
         </scene>
-        <!--Detail Stop View Controller-->
-        <scene sceneID="GDs-j7-Rus">
+        <!--Stop Times View Controller-->
+        <scene sceneID="46n-Il-FP9">
             <objects>
-                <viewController id="xRp-mZ-puO" customClass="DGDetailStopViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ON5-bY-yqW">
+                <tableViewController id="MWi-kM-hYS" customClass="DGStopTimesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EHA-58-4uj">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97r-oy-j0o">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ul4-0Z-EaM"/>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlJ-n9-bNs">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ul4-0Z-EaM" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="3Zo-w7-h2A"/>
-                            <constraint firstItem="DlJ-n9-bNs" firstAttribute="top" secondItem="ON5-bY-yqW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="5mm-xU-Gvg"/>
-                            <constraint firstItem="ul4-0Z-EaM" firstAttribute="centerX" secondItem="97r-oy-j0o" secondAttribute="centerX" type="default" id="7Lq-R6-9Kd"/>
-                            <constraint firstItem="97r-oy-j0o" firstAttribute="top" secondItem="DlJ-n9-bNs" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Dvc-m9-tp2"/>
-                            <constraint firstAttribute="trailing" secondItem="ul4-0Z-EaM" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="SVS-Cd-vyS"/>
-                            <constraint firstItem="ul4-0Z-EaM" firstAttribute="top" secondItem="97r-oy-j0o" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="TsY-cy-tay"/>
-                            <constraint firstItem="DlJ-n9-bNs" firstAttribute="leading" secondItem="97r-oy-j0o" secondAttribute="leading" type="default" id="mhy-7A-vHO"/>
-                            <constraint firstItem="ul4-0Z-EaM" firstAttribute="leading" secondItem="ON5-bY-yqW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="pBk-W6-G3d"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="eqx-PX-0pJ"/>
-                    <connections>
-                        <outlet property="lblLocation" destination="97r-oy-j0o" id="cdq-cI-Q9E"/>
-                        <outlet property="lblTitle" destination="DlJ-n9-bNs" id="Pi8-mP-ZIj"/>
-                        <outlet property="map" destination="ul4-0Z-EaM" id="bJx-qC-EpE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2N9-qJ-uuS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeForStop" textLabel="2JO-TV-bS3" detailTextLabel="U9d-xh-iXm" style="IBUITableViewCellStyleSubtitle" id="Axl-Lv-Tj3">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JO-TV-bS3">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9d-xh-iXm">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MWi-kM-hYS" id="Eyb-nx-YDV"/>
+                            <outlet property="delegate" destination="MWi-kM-hYS" id="E5M-G6-gTl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="B1P-5K-j3e"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2mW-nL-ivt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2163" y="-237"/>
+            <point key="canvasLocation" x="2631" y="-237"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DGDetailStopViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGDetailStopViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lblLocation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="DGMetrolinkMapViewController" superclassName="PDFScrollViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGMetrolinkMapViewController.h"/>
-        </class>
-        <class className="DGMetrolinkRouteViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGMetrolinkRouteViewController.h"/>
-        </class>
-        <class className="DGMetrolinkStopViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGMetrolinkStopViewController.h"/>
-        </class>
-        <class className="DGOctaMapViewController" superclassName="PDFScrollViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGOctaMapViewController.h"/>
-        </class>
-        <class className="DGOctaRouteViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGOctaRouteViewController.h"/>
-        </class>
-        <class className="DGOctaStopViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGOctaStopViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PDFScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PDFScrollView.h"/>
-        </class>
-        <class className="PDFScrollViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PDFScrollViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

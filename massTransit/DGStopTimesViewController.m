@@ -1,21 +1,18 @@
 //
-//  DGOctaStopViewController.m
+//  DGStopTimesViewController.m
 //  massTransit
 //
-//  Created by Campus User on 11/7/13.
+//  Created by Campus User on 11/12/13.
 //  Copyright (c) 2013 gamda. All rights reserved.
 //
 
-#import "DGOctaStopViewController.h"
-#import "DGDetailStopViewController.h"
+#import "DGStopTimesViewController.h"
 
-@interface DGOctaStopViewController ()
+@interface DGStopTimesViewController ()
 
 @end
 
-@implementation DGOctaStopViewController
-
-@synthesize stops, myRoute;
+@implementation DGStopTimesViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,13 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (dbAccess == nil) {
-        dbAccess = [[DGOctaDb alloc] init];
-    }
-    
-    stops = [dbAccess stopsForRoute:myRoute];
-    self.title = [NSString stringWithFormat:@"%@%@",@"Stops for route ", [myRoute route_id]];
 
+    self.stopTimes = [self.dbAccess timesForStop:self.myStop];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,6 +38,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    self.stopTimes = nil;
     // Dispose of any resources that can be recreated.
 }
 
@@ -53,21 +46,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
+// #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
+// #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [stops count];
+    return [self.stopTimes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"StopCell";
+    static NSString *CellIdentifier = @"timeForStop";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -75,11 +68,11 @@
 		// Use the default cell style.
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    DGStop* stop = [stops objectAtIndex:indexPath.row];
-    // cell.textLabel.text = [stop stop_name];
-    cell.textLabel.text = [stop stop_id];
-    cell.detailTextLabel.text = [stop stop_name];
-
+    DGStopTimes* time = [self.stopTimes objectAtIndex:indexPath.row];
+    cell.textLabel.text = time.departure_time;
+    //NSLog(@"%@",[self.dbAccess service_idForTripId:time.trip_id]);
+    cell.detailTextLabel.text = [self.dbAccess service_idForTripId:time.trip_id];
+    
     return cell;
 }
 
@@ -133,16 +126,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"octaStopToDetail"]) {
-        DGDetailStopViewController* stopVC = segue.destinationViewController;
-        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        stopVC.myStop = [self.stops objectAtIndex:selectedRowIndex.row];
-        stopVC.dbAccess = dbAccess;
-    }
 }
 
 @end

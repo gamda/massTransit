@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610DEC5D1832DC37009378DF /* DGStopTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 610DEC5C1832DC37009378DF /* DGStopTimesViewController.m */; };
 		61ADB08C182B53A000AE00E7 /* DGStopTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB08B182B53A000AE00E7 /* DGStopTimes.m */; };
 		61ADB090182B711000AE00E7 /* DGOctaDb.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB08F182B710F00AE00E7 /* DGOctaDb.m */; };
 		61ADB093182B71E600AE00E7 /* DGMetrolinkDb.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADB092182B71E600AE00E7 /* DGMetrolinkDb.m */; };
@@ -50,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610DEC5B1832DC36009378DF /* DGStopTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStopTimesViewController.h; sourceTree = "<group>"; };
+		610DEC5C1832DC37009378DF /* DGStopTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStopTimesViewController.m; sourceTree = "<group>"; };
 		61ADB08A182B53A000AE00E7 /* DGStopTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGStopTimes.h; sourceTree = "<group>"; };
 		61ADB08B182B53A000AE00E7 /* DGStopTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGStopTimes.m; sourceTree = "<group>"; };
 		61ADB08E182B710E00AE00E7 /* DGOctaDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGOctaDb.h; sourceTree = "<group>"; };
@@ -132,6 +135,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		610DEC5E1832DE36009378DF /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				61D343C2182CB57F00453681 /* DGMetrolinkMapViewController.h */,
+				61D343C3182CB57F00453681 /* DGMetrolinkMapViewController.m */,
+				61C1CE59182B17CC006A3531 /* DGOctaMapViewController.h */,
+				61C1CE5A182B17CC006A3531 /* DGOctaMapViewController.m */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
 		61ADB08D182B58ED00AE00E7 /* GTFS Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,10 +202,9 @@
 				61D343CF182CD16600453681 /* Metrolink Route Info */,
 				61D343D0182D7DB000453681 /* DGDetailStopViewController.h */,
 				61D343D1182D7DB000453681 /* DGDetailStopViewController.m */,
-				61C1CE59182B17CC006A3531 /* DGOctaMapViewController.h */,
-				61C1CE5A182B17CC006A3531 /* DGOctaMapViewController.m */,
-				61D343C2182CB57F00453681 /* DGMetrolinkMapViewController.h */,
-				61D343C3182CB57F00453681 /* DGMetrolinkMapViewController.m */,
+				610DEC5B1832DC36009378DF /* DGStopTimesViewController.h */,
+				610DEC5C1832DC37009378DF /* DGStopTimesViewController.m */,
+				610DEC5E1832DE36009378DF /* Maps */,
 				61ADB08D182B58ED00AE00E7 /* GTFS Models */,
 				61C1CE68182B2428006A3531 /* SQLite */,
 				61C1CE4C182B146E006A3531 /* PDF Scroll */,
@@ -367,6 +380,7 @@
 				61D343CA182CBFA100453681 /* DGOctaStopViewController.m in Sources */,
 				61D343CE182CD16000453681 /* DGMetrolinkStopViewController.m in Sources */,
 				61D343D2182D7DB000453681 /* DGDetailStopViewController.m in Sources */,
+				610DEC5D1832DC37009378DF /* DGStopTimesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

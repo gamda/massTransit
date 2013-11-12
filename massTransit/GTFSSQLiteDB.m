@@ -137,4 +137,25 @@
     return times;
 }
 
+- (NSString*)service_idForTripId: (int)tripId {
+    NSString* query = [NSString stringWithFormat:
+                       @"select service_id from trips where trip_id = %c",tripId];
+    sqlite3_stmt* stmt;
+    const unsigned char* text;
+    NSString *serviceId;
+    
+    if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            // Column 1: trip_id
+            text = sqlite3_column_text(stmt, 0);
+            NSLog(@"Row %s",text);
+            if( text )
+                serviceId = [NSString stringWithCString:(const char*)text encoding:NSUTF8StringEncoding];
+            else
+                serviceId = nil;
+        }
+    }
+    return serviceId;
+}
+
 @end
