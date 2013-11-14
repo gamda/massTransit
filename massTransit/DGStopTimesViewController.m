@@ -27,7 +27,47 @@
 {
     [super viewDidLoad];
 
-    self.stopTimes = [self.dbAccess timesForStop:self.myStop];
+    NSArray* times = [DGStopTimes sortedArrayByDepartureTimeFromArray:[self.dbAccess timesForStop:self.myStop]];
+    
+    int serviceCount = [[times valueForKeyPath:@"@distinctUnionOfObjects.service_id"] count];
+    
+    NSMutableArray* timesById = [[NSMutableArray alloc] initWithCapacity:serviceCount];
+    for (int i = 0; i < serviceCount; ++i) {
+        NSMutableDictionary* placeholder = [[NSMutableDictionary alloc] init];
+        NSMutableArray* data = [[NSMutableArray alloc] init];
+        [placeholder setObject:data forKey:@"data"];
+        NSString* none = @"none";
+        [placeholder setObject:none forKey:@"serviceId"];
+        [timesById addObject:placeholder];
+    }
+    
+    bool timeAdded = NO;
+    for( DGStopTimes* time in times ) {
+        timeAdded = NO;
+        for( NSMutableDictionary* dict in timesById ) {
+            if (!timeAdded) {
+                if( [time.service_id compare:[dict objectForKey:@"serviceId"]] == NSOrderedSame ) {
+                    NSLog(@"%@",time.service_id);
+                    [[dict objectForKey:@"data"] addObject:time];
+                    timeAdded = YES;
+                }
+                else if( [[dict objectForKey:@"data"] count] == 0 ) {
+                    // Array is empty, add new serviceId
+                    [dict setObject:time.service_id forKey:@"serviceId"];
+                    [[dict objectForKey:@"data"] addObject:time];
+                    timeAdded = YES;
+                }
+            }
+        }
+    }
+    NSLog(@"%d",[times count]);
+    NSLog(@"%d",[timesById count]);
+    NSLog(@"%d",[[[timesById objectAtIndex:0] objectForKey:@"data"] count]);
+    NSLog(@"%d",[[[timesById objectAtIndex:1] objectForKey:@"data"] count]);
+    NSLog(@"%d",[[[timesById objectAtIndex:2] objectForKey:@"data"] count]);
+    
+    self.stopTimes = timesById;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -48,14 +88,14 @@
 {
 // #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return [self.stopTimes count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 // #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.stopTimes count];
+    return [[[self.stopTimes objectAtIndex:section] objectForKey:@"data"] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,14 +106,17 @@
     // Configure the cell...
     if (cell == nil) {
 		// Use the default cell style.
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    DGStopTimes* time = [self.stopTimes objectAtIndex:indexPath.row];
+    DGStopTimes* time = [[[self.stopTimes objectAtIndex:indexPath.section] objectForKey:@"data" ] objectAtIndex:indexPath.row];
     cell.textLabel.text = time.departure_time;
-    //NSLog(@"%@",[self.dbAccess service_idForTripId:time.trip_id]);
-    cell.detailTextLabel.text = [self.dbAccess service_idForTripId:time.trip_id];
+    // cell.detailTextLabel.text = [[self.stopTimes objectAtIndex:indexPath.section] objectForKey:@"serviceId"];
     
     return cell;
+}
+
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [[self.stopTimes objectAtIndex:section] objectForKey:@"serviceId"];
 }
 
 /*

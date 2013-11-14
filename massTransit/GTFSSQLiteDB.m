@@ -97,7 +97,7 @@
     NSString* query = [NSString stringWithFormat:@"select trip_id, arrival_time, departure_time, stop_id, stop_sequence from stop_times where stop_id = %s",[stop.stop_id UTF8String]];
     sqlite3_stmt* stmt;
     const unsigned char* text;
-    NSString *arrival, *departure, *stopId;
+    NSString *arrival, *departure, *stopId, *serviceId;
     int tripId, stopSequence = 0;
     
     if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
@@ -125,21 +125,27 @@
             // Column 5: stop_sequence
             stopSequence = sqlite3_column_int(stmt, 4);
             
+            // Get service_id
+            serviceId = [self service_idForTripId:tripId];
+            
             // Add time schedule to array
             DGStopTimes* newTime = [[DGStopTimes alloc] initWithTripId:tripId
                                                        andArrivalTime:arrival
                                                        andDepartureTime:departure
-                                                       andStopId:stopId andStopSequence:stopSequence];
+                                                       andStopId:stopId
+                                                       andStopSequence:stopSequence
+                                                       andServiceId:serviceId];
             [times addObject:newTime];
         }
         sqlite3_finalize(stmt);
     }
+
     return times;
 }
 
 - (NSString*)service_idForTripId: (int)tripId {
     NSString* query = [NSString stringWithFormat:
-                       @"select service_id from trips where trip_id = %c",tripId];
+                       @"select service_id from trips where trip_id = %d",tripId];
     sqlite3_stmt* stmt;
     const unsigned char* text;
     NSString *serviceId;
@@ -148,7 +154,6 @@
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             // Column 1: trip_id
             text = sqlite3_column_text(stmt, 0);
-            NSLog(@"Row %s",text);
             if( text )
                 serviceId = [NSString stringWithCString:(const char*)text encoding:NSUTF8StringEncoding];
             else

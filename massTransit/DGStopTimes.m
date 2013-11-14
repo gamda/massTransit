@@ -10,13 +10,14 @@
 
 @implementation DGStopTimes
 
-@synthesize trip_id, arrival_time, departure_time, stop_id, stop_sequence;
+@synthesize trip_id, arrival_time, departure_time, stop_id, stop_sequence, service_id;
 
 - (id) initWithTripId: (int) tripId
        andArrivalTime: (NSString*) arrivalTime
        andDepartureTime: (NSString*) departureTime
         andStopId: (NSString*) stopId
         andStopSequence: (int) stopSequence
+        andServiceId: (NSString*)serviceId
 {
     self = [super init];
     if (self != nil) {
@@ -25,8 +26,15 @@
         departure_time = departureTime;
         stop_id = stopId;
         stop_sequence = stopSequence;
+        service_id = serviceId;
     }
     return self;
+}
+
++ (NSArray*)sortedArrayByDepartureTimeFromArray: (NSArray*) timeArray {
+    NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"departure_time" ascending:YES];
+    NSArray * descriptors = [NSArray arrayWithObject:valueDescriptor];
+    return [timeArray sortedArrayUsingDescriptors:descriptors];
 }
 
 @end

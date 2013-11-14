@@ -15,13 +15,17 @@
 @property (readonly) NSString* departure_time;
 @property (readonly) NSString* stop_id;
 @property (readonly) int stop_sequence;
+@property (readonly) NSString* service_id;
 // Excluded optional fields
 
 - (id) initWithTripId: (int) tripId
        andArrivalTime: (NSString*) arrivalTime
         andDepartureTime: (NSString*) departureTime
         andStopId: (NSString*) stopId
-        andStopSequence: (int) stopSequence;
+        andStopSequence: (int) stopSequence
+        andServiceId: (NSString*)serviceId;
+
++ (NSArray*)sortedArrayByDepartureTimeFromArray: (NSArray*) timeArray;
 
 @end
 
