@@ -12,11 +12,19 @@
 #import "DGTrip.h"
 #import "DGStopTimes.h"
 
+typedef enum serviceDays : NSUInteger {
+    weekdays = 0,
+    saturday,
+    sunday,
+} serviceDays;
+
 @interface GTFSSQLiteDB : SQLiteDB
 
 - (NSArray*)allRoutes;
 - (NSArray*)stopsForRoute:(DGRoute*)rt;
 - (NSArray*)timesForStop: (DGStop*)stop;
+- (NSArray*)timesForStop:(DGStop *)stop andServiceDays: (serviceDays) service;
+- (NSString*)queryStringForServiceDay: (serviceDays) service;
 - (NSString*)service_idForTripId: (int)tripId;
 
 @end

@@ -47,6 +47,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    stops = nil;
 }
 
 #pragma mark - Table view data source

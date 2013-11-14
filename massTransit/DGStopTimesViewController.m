@@ -27,7 +27,8 @@
 {
     [super viewDidLoad];
 
-    NSArray* times = [DGStopTimes sortedArrayByDepartureTimeFromArray:[self.dbAccess timesForStop:self.myStop]];
+    NSArray* times = [self.dbAccess timesForStop:self.myStop];
+    // [DGStopTimes sortedArrayByDepartureTimeFromArray:[self.dbAccess timesForStop:self.myStop]];
     
     int serviceCount = [[times valueForKeyPath:@"@distinctUnionOfObjects.service_id"] count];
     
@@ -47,7 +48,6 @@
         for( NSMutableDictionary* dict in timesById ) {
             if (!timeAdded) {
                 if( [time.service_id compare:[dict objectForKey:@"serviceId"]] == NSOrderedSame ) {
-                    NSLog(@"%@",time.service_id);
                     [[dict objectForKey:@"data"] addObject:time];
                     timeAdded = YES;
                 }
@@ -60,11 +60,6 @@
             }
         }
     }
-    NSLog(@"%d",[times count]);
-    NSLog(@"%d",[timesById count]);
-    NSLog(@"%d",[[[timesById objectAtIndex:0] objectForKey:@"data"] count]);
-    NSLog(@"%d",[[[timesById objectAtIndex:1] objectForKey:@"data"] count]);
-    NSLog(@"%d",[[[timesById objectAtIndex:2] objectForKey:@"data"] count]);
     
     self.stopTimes = timesById;
     
@@ -78,8 +73,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    self.stopTimes = nil;
     // Dispose of any resources that can be recreated.
+    self.stopTimes = nil;
 }
 
 #pragma mark - Table view data source

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum routeType : NSUInteger {
-    tram,
+    tram = 0,
     subway,
     rail,
     bus,

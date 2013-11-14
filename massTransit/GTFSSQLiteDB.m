@@ -60,7 +60,7 @@
     
     NSString *stopId, *stopName;
     double stopLat, stopLon;
-    NSString* query = [NSString stringWithFormat:@"select distinct stops.stop_id, stop_name, stop_lat, stop_lon from stop_times, stops, trips where trips.trip_id=stop_times.trip_id and stop_times.stop_id=stops.stop_id and route_id=\"%@\" order by stops.stop_id",[rt route_id]] ;
+    NSString* query = [NSString stringWithFormat:@"select distinct stops.stop_id, stop_name, stop_lat, stop_lon from stop_times, stops, trips where trips.trip_id=stop_times.trip_id and stop_times.stop_id=stops.stop_id and route_id=\"%@\" order by stop_times.stop_sequence",[rt route_id]] ;
     if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             // Column 1: stop_id
@@ -94,7 +94,7 @@
 
 - (NSArray*)timesForStop: (DGStop*)stop {
     NSMutableArray* times = [[NSMutableArray alloc] init];
-    NSString* query = [NSString stringWithFormat:@"select trip_id, arrival_time, departure_time, stop_id, stop_sequence from stop_times where stop_id = %s",[stop.stop_id UTF8String]];
+    NSString* query = [NSString stringWithFormat:@"select trip_id, arrival_time, departure_time, stop_id, stop_sequence from stop_times where stop_id = %@ order by arrival_time",stop.stop_id];
     sqlite3_stmt* stmt;
     const unsigned char* text;
     NSString *arrival, *departure, *stopId, *serviceId;
@@ -141,6 +141,72 @@
     }
 
     return times;
+}
+
+- (NSArray*)timesForStop:(DGStop *)stop andServiceDays: (serviceDays) service {
+    NSMutableArray* times = [[NSMutableArray alloc] init];
+    NSString* query = [NSString stringWithFormat:@"select trips.trip_id, arrival_time, departure_time, stop_id, stop_sequence from stop_times, trips, calendar where stop_id = %@ and %@ order by arrival_time",
+                       stop.stop_id ,
+                       [self queryStringForServiceDay:service]];
+    sqlite3_stmt* stmt;
+    const unsigned char* text;
+    NSString *arrival, *departure, *stopId, *serviceId;
+    int tripId, stopSequence = 0;
+    
+    if( sqlite3_prepare_v2(_databaseConnection, [query UTF8String], [query length], &stmt, nil) == SQLITE_OK) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            // Column 1: trip_id
+            tripId = sqlite3_column_int(stmt, 0);
+            // Column 2: arrival_time
+            text = sqlite3_column_text(stmt, 1);
+            if( text )
+                arrival = [NSString stringWithCString:(const char*)text encoding:NSUTF8StringEncoding];
+            else
+                arrival = nil;
+            // Column 3: departure_time
+            text = sqlite3_column_text(stmt, 2);
+            if( text )
+                departure = [NSString stringWithCString:(const char*)text encoding:NSUTF8StringEncoding];
+            else
+                departure = nil;
+            // Column 4: stop_id
+            text = sqlite3_column_text(stmt, 3);
+            if( text )
+                stopId = [NSString stringWithCString:(const char*)text encoding:NSUTF8StringEncoding];
+            else
+                stopId = nil;
+            // Column 5: stop_sequence
+            stopSequence = sqlite3_column_int(stmt, 4);
+            
+            // Get service_id
+            serviceId = [self service_idForTripId:tripId];
+            
+            // Add time schedule to array
+            DGStopTimes* newTime = [[DGStopTimes alloc] initWithTripId:tripId
+                                                        andArrivalTime:arrival
+                                                      andDepartureTime:departure
+                                                             andStopId:stopId
+                                                       andStopSequence:stopSequence
+                                                          andServiceId:serviceId];
+            [times addObject:newTime];
+        }
+        sqlite3_finalize(stmt);
+    }
+    
+    return times;
+}
+
+- (NSString*)queryStringForServiceDay: (serviceDays) service {
+    switch (service) {
+        case weekdays:
+            return @"monday=1 and tuesday=1 and wednesday=1 and thursday=1 and friday=1";
+        case saturday:
+            return @"saturday=1";
+        case sunday:
+            return @"sunday=1";
+        default:
+            break;
+    }
 }
 
 - (NSString*)service_idForTripId: (int)tripId {
